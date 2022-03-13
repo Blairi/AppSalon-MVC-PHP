@@ -130,6 +130,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Consulta Plana de SQL (utilizar cuando los métodos del modelo no son suficientes)
+    public static function SQl($query) {
+        $resultado = self::consultarSQL($query);
+        return $resultado;
+    }
+
     // crea un nuevo registro
     public function crear() {
         // Sanitizar los datos

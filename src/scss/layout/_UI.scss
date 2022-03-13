@@ -19,8 +19,36 @@
     }
 
     .app{
-        width: 95%;
-        margin: 0 auto;
-        padding: 3rem 0;
+        padding: 3rem 1rem;
+        @include m.tablet{
+            overflow: scroll;
+            overflow-x: hidden;
+        }
+    }
+}
+
+.barra{
+    margin: v.$separacion;
+    @include m.tablet{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .boton{
+        @include m.boton(v.$negro, v.$blanco);
+        margin: 0;
+    }
+}
+.barra-servicios{
+    margin-bottom: v.$separacion;
+    @include m.tablet{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        margin: 0;
+        .boton{
+            font-size: 1.5rem;
+            padding: 1rem;
+            margin: 0 0 1rem 0;
+        }
     }
 }
