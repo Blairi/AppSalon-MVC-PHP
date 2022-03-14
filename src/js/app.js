@@ -128,7 +128,7 @@ const paginaSiguiente = () => {
 
 const consultarAPI = async () => {
     try {
-        const url = "http://localhost/api/servicios";
+        const url = "https://morning-taiga-80295.herokuapp.com/api/servicios";
         const resultado = await fetch(url);
         const servicios = await resultado.json();
 
@@ -331,7 +331,7 @@ const reservarCita = async () => {
 
     // Petición hacia la API
     try {
-        const url = "http://localhost/api/citas";
+        const url = "https://morning-taiga-80295.herokuapp.com/api/citas";
         const respuesta = await fetch(url, {
             method: "POST",
             body: datos
