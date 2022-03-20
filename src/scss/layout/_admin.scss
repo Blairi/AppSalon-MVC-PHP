@@ -1,30 +1,50 @@
 @use 'base/variables' as v;
 @use 'base/mixins' as m;
-.citas{
-    list-style: none;
-    padding: 0;
-    li{
-        padding: 1rem;
-        border-top: 1px solid v.$blanco;
-        p{
-            color: v.$azul;
-            font-weight: v.$bold;
-        }
-        span,
-        .servicio{
-            color: v.$blanco;
-            font-weight: v.$regular;
-        }
-    }
-}
-.servicios{
-    @extend .citas;
 
-    .acciones{
-        margin: 0;
-    }
-    .boton,
+.cita{
+    background-color: v.$blanco;
+    margin-bottom: 2rem;
+    border-radius: 1rem 1rem 0 0;
+    overflow: hidden;
     .boton-eliminar{
         margin: 0;
+        width: 100%;
+    }
+    .cliente-info{
+        background-color: darken(v.$blanco, 10);
+        display: flex;
+        justify-content: space-around;
+    }
+    .cita-info{
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .contacto-info{
+        p{
+            margin: 0 0 1.2rem 0;
+        }
+        span{
+            display: block;
+        }
+    }
+    .servicio-info{
+        background-color: darken(v.$blanco, 6);
+        p{
+            margin: 0 0 1.2rem 0;
+        }
+        span{
+            display: block;
+        }
+    }
+    .contacto-info,
+    .servicio-info{
+        padding: .4rem .5rem 0 .5rem;
+    }
+    p{
+        color: v.$negro;
+    }
+    span{
+        color: v.$azul;
+        font-weight: v.$bold;
     }
 }

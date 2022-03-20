@@ -3,11 +3,13 @@
 namespace Controllers;
 
 use Model\Cita;
+use Model\AdminCita;
 use Model\CitaServicio;
 use Model\Servicio;
 
 class APIController{
     public static function index(){
+        isAuth();
         $servicios = Servicio::all();
         echo json_encode($servicios);
     }
@@ -44,5 +46,22 @@ class APIController{
             $cita->eliminar();
             header("Location: " . $_SERVER["HTTP_REFERER"]);
         }
+    }
+
+    public static function vercitas(){
+        isAdmin();
+        // Consultar la base de datos
+        $consulta = "SELECT citas.id, citas.hora, citas.fecha, CONCAT( usuarios.nombre, ' ', usuarios.apellido) as cliente, ";
+        $consulta .= " usuarios.email, usuarios.telefono, servicios.nombre as servicio, servicios.precio  ";
+        $consulta .= " FROM citas  ";
+        $consulta .= " LEFT OUTER JOIN usuarios ";
+        $consulta .= " ON citas.usuarioId=usuarios.id  ";
+        $consulta .= " LEFT OUTER JOIN citasServicios ";
+        $consulta .= " ON citasServicios.citaId=citas.id ";
+        $consulta .= " LEFT OUTER JOIN servicios ";
+        $consulta .= " ON servicios.id=citasServicios.servicioId ";
+
+        $citas = AdminCita::SQl($consulta);
+        echo json_encode($citas);
     }
 }

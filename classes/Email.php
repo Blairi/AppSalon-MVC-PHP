@@ -22,14 +22,15 @@ class Email{
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '527672c9ae1331';
-        $mail->Password = 'e85b4e1fdd44ed';
+        $mail->SMTPSecure = "tls";
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->Username = $_ENV["E_MAIL"];
+        $mail->Password = $_ENV["E_PASS"];
 
-        $mail->setFrom("cuentas@appsalon.com");
-        $mail->addAddress("cuentas@appsalon.com", "AppSalon.com");
+        $mail->setFrom($_ENV["E_MAIL"], "App Salón");
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = "Confirma tu cuenta";
 
         // Set HTML
@@ -39,7 +40,7 @@ class Email{
         $contenido = '<html>';
         $contenido .= '<p><strong>Hola ' . $this->nombre .'</strong> Has creado tu cuenta en App Salon, solo debes confirmarla presionando el siguiente enlace</p>';
         $contenido .= '<p>Presiona aquí: <a href="';
-        $contenido .= "https://morning-taiga-80295.herokuapp.com";
+        $contenido .= "http://localhost";
         $contenido .= '/confirmar-cuenta?token='. $this->token .'">Confirmar Cuenta</a></p>';
         $contenido .= "<p>Si tu no solicitaste esta cuenta, puedes ignorar el mensaje.</p>";
         $contenido .= '</html>';
@@ -57,14 +58,15 @@ class Email{
         // Crear el objeto de email
         $mail = new PHPMailer();
         $mail->isSMTP();
-        $mail->Host = 'smtp.mailtrap.io';
         $mail->SMTPAuth = true;
-        $mail->Port = 2525;
-        $mail->Username = '527672c9ae1331';
-        $mail->Password = 'e85b4e1fdd44ed';
+        $mail->SMTPSecure = "tls";
+        $mail->Host = 'smtp.gmail.com';
+        $mail->Port = 587;
+        $mail->Username = $_ENV["E_MAIL"];
+        $mail->Password = $_ENV["E_PASS"];
 
-        $mail->setFrom("cuentas@appsalon.com");
-        $mail->addAddress("cuentas@appsalon.com", "AppSalon.com");
+        $mail->setFrom($_ENV["E_MAIL"], "App Salón");
+        $mail->addAddress($this->email, $this->nombre);
         $mail->Subject = "Restablece tu password";
 
         // Set HTML

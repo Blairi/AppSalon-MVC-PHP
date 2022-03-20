@@ -5,8 +5,8 @@ namespace Controllers;
 use Model\AdminCita;
 use MVC\Router;
 
-class AdminController
-{
+class AdminController{
+    
     public static function index(Router $router)
     {
 
