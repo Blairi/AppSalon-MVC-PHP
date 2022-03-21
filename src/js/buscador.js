@@ -1,3 +1,4 @@
+const dominio = "https://morning-taiga-80295.herokuapp.com"
 document.addEventListener("DOMContentLoaded", () => {
     iniciarApp();
 });
@@ -13,7 +14,7 @@ const citasArr = [];
 const citasAPI = async () => {
     try {
 
-        const url = "http://localhost/api/vercitas";
+        const url = `${dominio}/api/vercitas`;
         const resultado = await fetch(url);
         const citas = await resultado.json();
 
