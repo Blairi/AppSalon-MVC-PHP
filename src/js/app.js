@@ -1,6 +1,7 @@
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3; // 500 resultados, mostrar 20 = 500 /20
+const dominio = "https://morning-taiga-80295.herokuapp.com"
 
 const cita = {
     id: "",
@@ -128,7 +129,7 @@ const paginaSiguiente = () => {
 
 const consultarAPI = async () => {
     try {
-        const url = "http://localhost/api/servicios";
+        const url = `${dominio}/api/servicios`;
         const resultado = await fetch(url);
         const servicios = await resultado.json();
 
@@ -331,7 +332,7 @@ const reservarCita = async () => {
 
     // Petición hacia la API
     try {
-        const url = "http://localhost/api/citas";
+        const url = `${dominio}/api/citas`;
         const respuesta = await fetch(url, {
             method: "POST",
             body: datos
