@@ -1,4 +1,5 @@
-const dominio = "https://morning-taiga-80295.herokuapp.com"
+// const dominio = "https://morning-taiga-80295.herokuapp.com"
+const dominio = "http://localhost";
 document.addEventListener("DOMContentLoaded", () => {
     iniciarApp();
 });

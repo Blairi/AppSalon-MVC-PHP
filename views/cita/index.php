@@ -1,4 +1,4 @@
-<h1 class="nombre-pagina">Crear Nueva Cita</h1>
+<h1 class="nombre-pagina" data-cy="titulo-crear-cita">Crear Nueva Cita</h1>
 <p class="descripcion-pagina">Elige tus Servicios y Coloca tus datos</p>
 
 <?php include_once __DIR__ . "/../templates/barra.php" ; ?>
@@ -36,6 +36,7 @@
                     type="date"
                     id="fecha"
                     min="<?php echo date("Y-m-d", strtotime(("+1 day"))); ?>"
+                    data-cy="input-fecha"
                 />
             </div>
             <div class="campo">
@@ -43,6 +44,7 @@
                 <input 
                     type="time"
                     id="hora"
+                    data-cy="input-hora"
                 />
             </div>
 
@@ -59,10 +61,13 @@
         <button
             id="anterior"
             class="boton"
+            data-cy="btn-anterior"
         >&laquo; Anterior</button>
+
         <button
             id="siguiente"
             class="boton"
+            data-cy="btn-siguiente"
         >Siguiente &raquo;</button>
     </div>
 </div>

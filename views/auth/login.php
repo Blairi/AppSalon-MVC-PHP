@@ -1,7 +1,7 @@
-<h1 class="nombre-pagina">Login</h1>
+<h1 class="nombre-pagina" data-cy="titulo-login">Login</h1>
 <p class="descripcion-pagina">Iniciar sesión con tus datos</p>
 <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
-<form class="formulario" method="POST" action="/">
+<form data-cy="formulario-login" class="formulario" method="POST" action="/">
     <div class="campo">
         <label for="email">Email</label>
         <input
@@ -9,6 +9,7 @@
             id="email"
             placeholder="Tu Email"
             name="email"
+            data-cy="input-email"
         />
     </div>
 
@@ -19,6 +20,7 @@
             id="password"
             placeholder="Tu Password"
             name="password"
+            data-cy="input-password"
         />
     </div>
 

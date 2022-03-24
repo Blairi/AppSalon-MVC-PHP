@@ -1,7 +1,8 @@
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3; // 500 resultados, mostrar 20 = 500 /20
-const dominio = "https://morning-taiga-80295.herokuapp.com"
+// const dominio = "https://morning-taiga-80295.herokuapp.com"
+const dominio = "http://localhost";
 
 const cita = {
     id: "",
@@ -157,6 +158,7 @@ const mostrarServicios = (servicios) => {
         const servicioDIV = document.createElement("DIV");
         servicioDIV.classList.add("servicio");
         servicioDIV.dataset.idServicio = id;
+        servicioDIV.dataset.cy = "servicio";
         servicioDIV.onclick = () => {
             seleccionarServicio(servicio);
         };
@@ -306,6 +308,7 @@ const mostrarResumen = () => {
     // Boton para crear la cita
     const botonReservar = document.createElement("BUTTON");
     botonReservar.classList.add("boton");
+    botonReservar.dataset.cy = "btn-reservar-cita";
     botonReservar.textContent = "Reservar cita";
     botonReservar.onclick = reservarCita;
 
