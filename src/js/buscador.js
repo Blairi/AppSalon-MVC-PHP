@@ -6,18 +6,37 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 const iniciarApp = () => {
-    citasAPI();
-    buscador();
+    repetidor();
 }
 
 
-const citasArr = [];
+const repetidor = () => {
+    setInterval(() => {
+        citasAPI();
+        actualizarCitas();
+    }, 4000);
+}
+
+let citasRenderizadas = 0;
+const actualizarCitas = () => {
+
+    if(citasArr.length != citasRenderizadas){
+        citasAPI();
+        citasRenderizadas = citasArr.length;
+        renderCitas(citasArr);
+    }
+}
+
+
+let citasArr = [];
 const citasAPI = async () => {
     try {
-
         const url = `${dominio}/api/vercitas`;
         const resultado = await fetch(url);
         const citas = await resultado.json();
+        
+        // Reiniciamos el arreglo en cada petición
+        citasArr.length = 0;
 
         let citaObj = {};
         let servicioObj = {};
@@ -57,70 +76,17 @@ const citasAPI = async () => {
 
         });
 
-        // Al iniciar la app se cargan las citas de hoy
-        const citasHoyArr = citasHoy();
-        renderCitas(citasHoyArr);
-
     } catch (error) {
         console.log(error);
     }
 }
 
-const buscador = () => {
 
-    const titulo = document.querySelector("#titulo-buscador");
-
-    const buscador = document.querySelector("#buscador");
-
-    buscador.addEventListener("input", (e) => {
-
-        const divInputs = document.querySelector(".inputs");
-        divInputs.innerHTML = "";
-
-        if(e.target.value == "hoy"){
-            titulo.textContent = "Citas de Hoy";
-            const citasHoyArr = citasHoy();
-            if(citasHoyArr){
-                renderCitas(citasHoyArr);
-            }
-        }
-        if(e.target.value == "fecha"){
-            titulo.textContent = "Citas por fecha";
-            
-            const divInputs = document.querySelector(".inputs");
-            divInputs.innerHTML = `<input type="date" id="input-fecha">`;
-            
-            const inputFecha = document.querySelector("#input-fecha");
-
-            inputFecha.addEventListener("input", (e) => {
-                const citasFechaArr = buscarFecha(e.target.value);
-                renderCitas(citasFechaArr);
-            });
-
-        }
-
-        if(e.target.value == "todas"){
-            titulo.textContent = "Todas las citas";
-            renderCitas(citasArr);
-        }
-
-    });
-}
 
 
 // const hoy = new Date();
 // const fecha = hoy.getFullYear()  + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
-const fecha = "2022-03-22";
-const citasHoy = () => {
-    const citasHoyArr = citasArr.filter(cita => cita.fecha == fecha);
-    return citasHoyArr;
-}
-
-
-const buscarFecha = (fecha) => {
-    const citasFechaArr = citasArr.filter(cita => cita.fecha == fecha);
-    return citasFechaArr;
-}
+// const fecha = "2022-03-22";
 
 
 const renderCitas = (citas) => {
