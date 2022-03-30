@@ -27,7 +27,7 @@ describe('Comportamiento de Usuario', () => {
 
     it("Seleccionar Datos", () => {
         cy.get("[data-cy='input-fecha']").should("exist");
-        cy.get("[data-cy='input-fecha']").type("2022-03-28");
+        cy.get("[data-cy='input-fecha']").type("2022-03-31");
 
         cy.get("[data-cy='input-hora']").should("exist");
         cy.get("[data-cy='input-hora']").type("11:33");

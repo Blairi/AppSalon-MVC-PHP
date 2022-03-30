@@ -1,5 +1,5 @@
-// const dominio = "https://morning-taiga-80295.herokuapp.com"
-const dominio = "http://localhost";
+const dominio = "https://morning-taiga-80295.herokuapp.com"
+// const dominio = "http://localhost";
 document.addEventListener("DOMContentLoaded", () => {
     iniciarApp();
 });
@@ -7,14 +7,84 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const iniciarApp = () => {
     repetidor();
+    buscador();
+}
+
+let buscadorActual = "";
+const buscador = () => {
+    const selectBuscador = document.querySelector("#buscador");
+    const tituloBuscador = document.querySelector("#titulo-buscador");
+    const inputsDIV = document.querySelector("#inputs");
+
+    buscadorActual = "hoy";
+
+    selectBuscador.addEventListener("input", (e) => {
+
+        inputsDIV.innerHTML = "";
+
+        switch (e.target.value) {
+            case "hoy":
+                tituloBuscador.textContent = "Citas de Hoy";
+
+                let citasHoyArr = buscador_hoy(citasArr);
+                renderCitas(citasHoyArr);
+                break;
+
+            case "fecha":
+                tituloBuscador.textContent = "Citas por Fecha";
+
+                inputsDIV.innerHTML = `<input type="date" id="input-date">`;
+
+                const fechaInput = document.querySelector("#input-date");
+
+                let citasFechaArr = [];
+                fechaInput.addEventListener("input", (e) => {
+                    citasFechaArr = buscador_fecha(citasArr, e.target.value);
+                    renderCitas(citasFechaArr);
+                });
+
+                break;
+
+            case "todas":
+                tituloBuscador.textContent = "Todas las Citas";
+
+                buscador_todas();
+                renderCitas(citasArr);
+                break;
+            default:
+                break;
+        }
+    });
 }
 
 
+// const fecha = new Date();
+// const fechaHoy = hoy.getFullYear()  + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
+const fechaHoy = "2022-03-31";
+const buscador_hoy = (citasArr) => {
+    buscadorActual = "hoy";
+    citasHoyArr = citasArr.filter(cita => cita.fecha == fechaHoy);
+    return citasHoyArr;
+}
+
+
+const buscador_fecha = (citasArr, fecha) => {
+    buscadorActual = "fecha";
+
+    citasFechaArr = citasArr.filter(cita => cita.fecha == fecha);
+    return citasFechaArr;
+}
+
+
+const buscador_todas = () => { buscadorActual = "todas" }
+
+
+// Lo usamos para actualizar las citas cada "n" segundos.
 const repetidor = () => {
     setInterval(() => {
         citasAPI();
         actualizarCitas();
-    }, 4000);
+    }, 2000);
 }
 
 let citasRenderizadas = 0;
@@ -23,11 +93,30 @@ const actualizarCitas = () => {
     if(citasArr.length != citasRenderizadas){
         citasAPI();
         citasRenderizadas = citasArr.length;
-        renderCitas(citasArr);
+
+        // Actualizamos según el buscador activo
+        switch (buscadorActual) {
+            case "hoy":
+                let citasHoyArr = buscador_hoy(citasArr);
+                renderCitas(citasHoyArr);
+                break;
+            case "fecha":
+                const fechaInput = document.querySelector("#input-date");
+
+                let citasFechaArr = buscador_fecha(citasArr, fechaInput.value );
+                renderCitas(citasFechaArr);
+                break;
+            case "todas":
+                renderCitas(citasArr);
+                break;
+            default:
+                break;
+        }
     }
 }
 
 
+// Construimos un arreglo de objetos formateado para renderizarlo
 let citasArr = [];
 const citasAPI = async () => {
     try {
@@ -82,13 +171,7 @@ const citasAPI = async () => {
 }
 
 
-
-
-// const hoy = new Date();
-// const fecha = hoy.getFullYear()  + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
-// const fecha = "2022-03-22";
-
-
+// Scripting para construir las citas
 const renderCitas = (citas) => {
     const divCitas = document.querySelector("#citas");
     divCitas.innerHTML = "";

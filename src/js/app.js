@@ -1,8 +1,8 @@
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3; // 500 resultados, mostrar 20 = 500 /20
-// const dominio = "https://morning-taiga-80295.herokuapp.com"
-const dominio = "http://localhost";
+const dominio = "https://morning-taiga-80295.herokuapp.com"
+// const dominio = "http://localhost";
 
 const cita = {
     id: "",

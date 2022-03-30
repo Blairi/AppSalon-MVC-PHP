@@ -9,7 +9,7 @@
         <option value="fecha">Citas por Fecha</option>
         <option value="todas">Todas las Citas</option>
     </select>
-    <div class="inputs"></div>
+    <div id="inputs"></div>
 </div>
 
 <h3 id="titulo-buscador">Citas de Hoy</h3>
