@@ -1,8 +1,7 @@
 let paso = 1;
 const pasoInicial = 1;
 const pasoFinal = 3; // 500 resultados, mostrar 20 = 500 /20
-const dominio = "https://morning-taiga-80295.herokuapp.com"
-// const dominio = "http://localhost";
+const dominio = window.location.origin;
 
 const cita = {
     id: "",
@@ -261,6 +260,7 @@ const mostrarResumen = () => {
     resumen.appendChild(headingServicios);
 
     // Mostrando servicios
+    let total = 0;
     servicios.forEach( (servicio) => {
 
         const { id, precio, nombre } = servicio;
@@ -273,6 +273,7 @@ const mostrarResumen = () => {
 
         const precioServicio = document.createElement("P");
         precioServicio.innerHTML = `<span>Precio:</span> $${precio}`;
+        total += Number(precio);
 
         contenedorServicio.appendChild(textoServicio);
         contenedorServicio.appendChild(precioServicio);
@@ -305,6 +306,9 @@ const mostrarResumen = () => {
     const horaCita = document.createElement("P");
     horaCita.innerHTML = `<span>Hora:</span> ${hora} Horas`;
 
+    const totalCita = document.createElement("P");
+    totalCita.innerHTML = `<span>Total:</span> $${total}`;
+
     // Boton para crear la cita
     const botonReservar = document.createElement("BUTTON");
     botonReservar.classList.add("boton");
@@ -315,6 +319,7 @@ const mostrarResumen = () => {
     resumen.appendChild(nombreCliente);
     resumen.appendChild(fechaCita);
     resumen.appendChild(horaCita);
+    resumen.appendChild(totalCita);
     resumen.appendChild(botonReservar);
 
 }

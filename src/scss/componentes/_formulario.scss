@@ -5,18 +5,27 @@
     margin-top: 5rem;
     width: 100%;
 }
-
 .campo{
-    display: flex;
+    display: block;
     margin-bottom: 2rem;
+    @include m.telefono{
+        display: flex;
+    }
     label{
-        flex: 0 0 10rem;
+        @include m.telefono{
+            flex: 0 0 10rem;
+        }
     }
     input{
-        flex: 1;
+        border-radius: 1rem;
         border: none;
         padding: calc(v.$separacion / 4);
-        border-radius: 1rem;
+        width: 100%;
+        margin-top: 1rem;
+        @include m.telefono{
+            margin-top: 0;
+            flex: 1;
+        }
 
         &:disabled{
             background-color: lighten(v.$negro, 30%);

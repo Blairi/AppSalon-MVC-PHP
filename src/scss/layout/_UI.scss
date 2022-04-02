@@ -28,7 +28,7 @@
 }
 
 .barra{
-    margin: v.$separacion;
+    margin: 1rem .5rem 3rem .5rem;
     @include m.tablet{
         display: flex;
         justify-content: space-between;
@@ -50,5 +50,8 @@
             padding: 1rem;
             margin: 0 0 1rem 0;
         }
+    }
+    a{
+        margin: 0 0 2rem 0;
     }
 }

@@ -1,5 +1,5 @@
 @use 'variables' as v;
-
+@use 'mixins' as m;
 h1, h2, h3 {
     font-family: v.$fuente_principal;
     margin: 0 0 calc(v.$separacion / 2) 0 ;
@@ -27,6 +27,10 @@ p {
     text-align: center;
     margin: 5rem 0;
     font-weight: v.$bold;
+    font-size: 3rem;
+    @include m.tablet{
+        font-size: 4rem;
+    }
 }
 .descripcion-pagina{
     text-align: center;

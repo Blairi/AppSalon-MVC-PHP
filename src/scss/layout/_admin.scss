@@ -14,10 +14,13 @@
         background-color: darken(v.$blanco, 10);
         display: flex;
         justify-content: space-around;
+        padding: 0 .5rem;
     }
     .cita-info{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        @include m.telefono{
+            grid-template-columns: 1fr 1fr;
+        }
     }
     .contacto-info{
         p{
