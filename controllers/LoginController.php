@@ -123,7 +123,7 @@ class LoginController{
             // Leer el nuevo password y guardar
 
             $password = new Usuario($_POST);
-            $alertas = $password->valdiarPassword();
+            $alertas = $password->validarPassword();
 
             if(empty($alertas)){
                 $usuario->password = null;

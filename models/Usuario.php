@@ -45,6 +45,9 @@ class Usuario extends ActiveRecord{
         if(!$this->email){
             self::$alertas["error"][] = "El E-mail es Obligatorio";
         }
+        if(strlen($this->email) > 60){
+            self::$alertas["error"][] = "El E-mail no debe tener mas de 60 caracteres";
+        }
         if(!$this->password){
             self::$alertas["error"][] = "El Password es Obligatorio";
         }
@@ -72,11 +75,14 @@ class Usuario extends ActiveRecord{
         if(!$this->email){
             self::$alertas["error"][] = "El Email es Obligatorio";
         }
+        if(strlen($this->email) > 60){
+            self::$alertas["error"][] = "El E-mail no debe tener mas de 60 caracteres";
+        }
         return self::$alertas;
     }
 
 
-    public function valdiarPassword(){
+    public function validarPassword(){
         if(!$this->password){
             self::$alertas["error"][] = "El password es Obligatorio";
         }
