@@ -8,7 +8,7 @@
         <li>
             <p>Nombre: <span><?php echo $servicio->nombre; ?></span></p>
             <p>Precio: <span>$ <?php echo $servicio->precio; ?></span></p>
-            <div class="acciones">
+            <div class="acciones-servicios">
                 <a class="boton" href="/servicios/actualizar?id=<?php echo $servicio->id?>">Actualizar</a>
                 <form action="/servicios/eliminar" method="POST">
                     <input type="hidden" name="id" value="<?php echo $servicio->id ?>">

@@ -15,3 +15,16 @@
         text-align: center;
     }
 }
+.acciones-servicios{
+    display: block;
+    @include m.tablet{
+        display: flex;
+        font-size: 2rem;
+    }
+    a{
+        margin-right: 0.9rem;
+    }
+    button{
+        margin-left: 0.9rem;
+    }
+}

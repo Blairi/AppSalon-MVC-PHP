@@ -57,9 +57,8 @@ const buscador = () => {
 }
 
 
-// const fecha = new Date();
-// const fechaHoy = hoy.getFullYear()  + '-' + ( hoy.getMonth() + 1 ) + '-' + hoy.getDate();
-const fechaHoy = "2022-03-31";
+const fecha = new Date();
+const fechaHoy = fecha.getFullYear()  + '-' + ( fecha.getMonth() + 1 ) + '-' + fecha.getDate();
 const buscador_hoy = (citasArr) => {
     buscadorActual = "hoy";
     citasHoyArr = citasArr.filter(cita => cita.fecha == fechaHoy);
@@ -174,6 +173,9 @@ const citasAPI = async () => {
 const renderCitas = (citas) => {
     const divCitas = document.querySelector("#citas");
     divCitas.innerHTML = "";
+    if(citas.length == 0){
+        divCitas.innerHTML = "No hay Citas";
+    }
 
     citas.forEach(cita => {
         const { id, cliente, telefono, email, fecha, hora, servicios, total } = cita;
