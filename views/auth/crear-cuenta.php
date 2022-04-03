@@ -1,4 +1,4 @@
-<h1 class="nombre-pagina">Crear Cuenta</h1>
+<h1 class="nombre-pagina" data-cy="titulo-crear">Crear Cuenta</h1>
 <p class="descripcion-pagina">Llena el siguiente formulario para crear una cuenta</p>
 
 <?php include_once __DIR__ . "/../templates/alertas.php"; ?>
@@ -7,6 +7,7 @@
     <div class="campo">
         <label for="nombre">Nombre</label>
         <input 
+            data-cy="input-nombre"
             type="text" 
             name="nombre" 
             id="nombre"
@@ -18,6 +19,7 @@
     <div class="campo">
         <label for="apellido">Apellido</label>
         <input 
+            data-cy="input-apellido"
             type="text" 
             name="apellido" 
             id="apellido"
@@ -29,6 +31,7 @@
     <div class="campo">
         <label for="telefono">Teléfono</label>
         <input 
+            data-cy="input-telefono"
             type="tel" 
             name="telefono" 
             id="telefono"
@@ -40,6 +43,7 @@
     <div class="campo">
         <label for="email">E-mail</label>
         <input 
+            data-cy="input-email"
             type="email" 
             name="email" 
             id="email"
@@ -51,6 +55,7 @@
     <div class="campo">
         <label for="password">Password</label>
         <input 
+            data-cy="input-password"
             type="password" 
             name="password" 
             id="password"
@@ -58,7 +63,7 @@
         />
     </div>
 
-    <input type="submit" value="Crear Cuenta" class="boton">
+    <input type="submit" value="Crear Cuenta" class="boton" data-cy="btn-crear">
 
 </form>
 

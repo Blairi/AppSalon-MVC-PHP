@@ -28,6 +28,6 @@
 </form>
 
 <div class="acciones">
-    <a href="/crear-cuenta">¿Aún no tienes una cuenta? Crear una</a>
+    <a href="/crear-cuenta" data-cy="btn-crear-cuenta">¿Aún no tienes una cuenta? Crear una</a>
     <a href="/olvide">¿Olvidaste tu password?</a>
 </div>
