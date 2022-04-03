@@ -36,23 +36,39 @@ class Usuario extends ActiveRecord{
         if(!$this->nombre){
             self::$alertas["error"][] = "El Nombre es Obligatorio";
         }
+        if(strlen($this->nombre) > 60){
+            self::$alertas["error"][] = "El nombre no debe tener mas de 60 caracteres";
+        }
+
         if(!$this->apellido){
             self::$alertas["error"][] = "El Apellido es Obligatorio";
         }
+        if(strlen($this->apellido) > 60){
+            self::$alertas["error"][] = "El apellido no debe tener mas de 60 caracteres";
+        }
+
         if(!$this->telefono){
             self::$alertas["error"][] = "El Teléfono es Obligatorio";
         }
+        if(strlen($this->telefono) > 15){
+            self::$alertas["error"][] = "El Teléfono no debe tener mas de 15 dígitos";
+        }
+
         if(!$this->email){
             self::$alertas["error"][] = "El E-mail es Obligatorio";
         }
         if(strlen($this->email) > 60){
             self::$alertas["error"][] = "El E-mail no debe tener mas de 60 caracteres";
         }
+
         if(!$this->password){
             self::$alertas["error"][] = "El Password es Obligatorio";
         }
         if(strlen($this->password) < 6){
             self::$alertas["error"][] = "El Password debe tener al menos 6 caracteres";
+        }
+        if(strlen($this->password) > 20){
+            self::$alertas["error"][] = "El Password no debe tener mas de 20 caracteres";
         }
 
         return self::$alertas;
